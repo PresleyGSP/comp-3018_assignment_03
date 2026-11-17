@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { HTTP_STATUS } from "../../../constants/httpConstants";
-import * as itemService from "../services/eventService";
+import * as eventService from "../services/eventService";
 import type { Event } from "../models/eventModel";
 import { successResponse } from "../models/responseModel";
 
@@ -16,7 +16,7 @@ export const getAllEvents = async (
     next: NextFunction
 ): Promise<void> => {
     try {
-        const events: Event[] = await itemService.getAllEvents();
+        const events: Event[] = await eventService.getAllEvents();
         res.status(HTTP_STATUS.OK).json(
             successResponse(events, "Events retrieved successfully")
         );
@@ -37,8 +37,8 @@ export const getEventById = async (
     next: NextFunction
 ): Promise<void> => {
     try {
-        const { id } = req.params;
-        const event: Event = await itemService.getEventById(id);
+        const { id } = req.params as { id: string };
+        const event: Event = await eventService.getEventById(id);
         res.status(HTTP_STATUS.OK).json(
             successResponse(event, "Event retrieved successfully")
         );
@@ -63,7 +63,7 @@ export const createEvent = async (
         const { name, capacity, date, registrationCount, status, category } = req.body;
         const eventData = { name, capacity, date, registrationCount, status, category };
 
-        const newEvent: Event = await itemService.createEvent(eventData);
+        const newEvent: Event = await eventService.createEvent(eventData);
         res.status(HTTP_STATUS.CREATED).json(
             successResponse(newEvent, "Event created successfully")
         );
@@ -84,13 +84,13 @@ export const updateEvent = async (
     next: NextFunction
 ): Promise<void> => {
     try {
-        const { id } = req.params;
+        const { id } = req.params as { id: string };
         const { name, capacity, date, registrationCount, status, category } = req.body;
 
         // Create update data object with only the fields that can be updated
         const updateData = { name, capacity, date, registrationCount, status, category };
 
-        const updatedEvent: Event = await itemService.updateEvent(id, updateData);
+        const updatedEvent: Event = await eventService.updateEvent(id, updateData);
         res.status(HTTP_STATUS.OK).json(
             successResponse(updatedEvent, "Event updated successfully")
         );
@@ -111,10 +111,11 @@ export const deleteEvent = async (
     next: NextFunction
 ): Promise<void> => {
     try {
-        const { id } = req.params;
-        const event: Event = await itemService.deleteEvent(id);
+        const { id } = req.params as { id: string };
+
+        await eventService.deleteEvent(id);
         res.status(HTTP_STATUS.OK).json(
-            successResponse(event, "Event deleted successfully")
+            successResponse(null, "Event deleted successfully")
         );
     } catch (error) {
         next(error);

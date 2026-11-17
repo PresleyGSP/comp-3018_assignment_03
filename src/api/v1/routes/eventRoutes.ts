@@ -5,18 +5,18 @@ import * as eventController from "../controllers/eventController";
 
 const router: Router = express.Router();
 
-router.get("/events", eventController.getAllEvents);
+router.get("/", eventController.getAllEvents);
 router.post(
-    "/events",
+    "/",
     validateRequest(eventSchemas.create),
     eventController.createEvent
 );
 router.get(
-    "/events/:id",
+    "/:id",
     validateRequest(eventSchemas.getById),
     eventController.getEventById
 );
-router.put("/events/:id", validateRequest(eventSchemas.update), eventController.updateEvent);
-router.delete("/events/:id", validateRequest(eventSchemas.delete), eventController.deleteEvent);
+router.put("/:id", validateRequest(eventSchemas.update), eventController.updateEvent);
+router.delete("/:id", validateRequest(eventSchemas.delete), eventController.deleteEvent);
 
 export default router;

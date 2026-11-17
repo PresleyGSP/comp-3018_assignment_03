@@ -16,7 +16,7 @@ router.get(
     validateRequest(eventSchemas.getById),
     eventController.getEventById
 );
-router.put("/events/:id", eventController.updateEvent);
-router.delete("/events/:id", eventController.deleteEvent);
+router.put("/events/:id", validateRequest(eventSchemas.update), eventController.updateEvent);
+router.delete("/events/:id", validateRequest(eventSchemas.delete), eventController.deleteEvent);
 
 export default router;

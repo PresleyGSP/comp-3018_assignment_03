@@ -30,7 +30,7 @@ export const eventSchemas = {
             status: Joi.string().valid("active", "cancelled", "completed").optional().messages({
                 "any.only": "Validation error: \"status\" must be one of ['active', 'cancelled', or 'completed']",
             }),
-            category: Joi.string().optional().messages({
+            category: Joi.string().valid("conference", "workshop", "meetup", "seminar", "general").optional().messages({
                 "any.only": "Validation error: \"category\" must be one of ['conference', 'workshop', 'meetup', 'seminar', 'general']",
             }),
         }),

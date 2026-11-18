@@ -1,4 +1,6 @@
 import { Event } from "../models/eventModel";
+import { errorResponse } from "../models/responseModel";
+import { HTTP_STATUS } from "../../../constants/httpConstants";
 
 import {
     createDocument,
@@ -76,6 +78,9 @@ export const createEvent = async (eventData: {
         const now = new Date();
         const newEventData = {
             ...eventData,
+            registrationCount: eventData.registrationCount || 0,
+            status: eventData.status || "active",
+            category: eventData.category || "general",
             createdAt: now,
             updatedAt: now,
         };

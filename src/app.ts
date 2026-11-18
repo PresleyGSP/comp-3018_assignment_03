@@ -1,3 +1,10 @@
+/**
+ * Student Name: Presley McFarlane-Goolcharan
+ * Version 1.0.0
+ * COMP-3018
+ * This module defines the express application.
+ */
+
 // import the express application and type definition
 import express, { Express } from "express";
 import morgan from "morgan";

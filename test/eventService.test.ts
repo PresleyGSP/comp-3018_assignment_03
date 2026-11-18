@@ -1,3 +1,10 @@
+/**
+ * Student Name: Presley McFarlane-Goolcharan
+ * Version 1.0.0
+ * COMP-3018
+ * This module defines eventService Tests.
+ */
+
 import * as eventService from "../src/api/v1/services/eventService";
 import * as firestoreRepository from "../src/api/v1/repositories/firestoreRepository";
 
@@ -153,7 +160,7 @@ describe("Event Service", () => {
             createdAt: expect.any(Date),
             updatedAt: expect.any(Date),
         };
-        
+
         const mockDoc = {
             id: mockEventId,
             exists: true,

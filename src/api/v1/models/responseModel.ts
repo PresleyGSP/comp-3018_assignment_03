@@ -1,4 +1,11 @@
 /**
+ * Student Name: Presley McFarlane-Goolcharan
+ * Version 1.0.0
+ * COMP-3018
+ * This module defines the API response model.
+ */
+
+/**
  * Interface representing a standard API response
  * @template T - The type of the data property
  */

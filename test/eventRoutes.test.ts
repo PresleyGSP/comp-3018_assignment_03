@@ -1,3 +1,10 @@
+/**
+ * Student Name: Presley McFarlane-Goolcharan
+ * Version 1.0.0
+ * COMP-3018
+ * This module defines event Routes Tests.
+ */
+
 import request from "supertest";
 import app from "../src/app";
 import * as eventController from "../src/api/v1/controllers/eventController";

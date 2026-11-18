@@ -1,3 +1,10 @@
+/**
+ * Student Name: Presley McFarlane-Goolcharan
+ * Version 1.0.0
+ * COMP-3018
+ * This module defines the event routes.
+ */
+
 import express, { Router } from "express";
 import { validateRequest } from "../middleware/validate";
 import { eventSchemas } from "../validations/eventValidation";

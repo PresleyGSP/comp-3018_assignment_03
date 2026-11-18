@@ -1,3 +1,10 @@
+/**
+ * Student Name: Presley McFarlane-Goolcharan
+ * Version 1.0.0
+ * COMP-3018
+ * This module defines the server.
+ */
+
 import app from "./app";
 
 // import server type definition

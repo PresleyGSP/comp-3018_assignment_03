@@ -1,3 +1,10 @@
+/**
+ * Student Name: Presley McFarlane-Goolcharan
+ * Version 1.0.0
+ * COMP-3018
+ * This module defines the Firestore repository.
+ */
+
 import { db } from "../../../../config/firebaseConfig";
 import { FieldValue, Timestamp } from "firebase-admin/firestore";
 

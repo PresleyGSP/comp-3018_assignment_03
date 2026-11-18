@@ -1,0 +1,29 @@
+/**
+ * Student Name: Presley McFarlane-Goolcharan
+ * Version 1.0.0
+ * COMP-3018
+ * This module defines the event routes.
+ */
+
+import express, { Router } from "express";
+import { validateRequest } from "../middleware/validate";
+import { eventSchemas } from "../validations/eventValidation";
+import * as eventController from "../controllers/eventController";
+
+const router: Router = express.Router();
+
+router.get("/", eventController.getAllEvents);
+router.post(
+    "/",
+    validateRequest(eventSchemas.create),
+    eventController.createEvent
+);
+router.get(
+    "/:id",
+    validateRequest(eventSchemas.getById),
+    eventController.getEventById
+);
+router.put("/:id", validateRequest(eventSchemas.update), eventController.updateEvent);
+router.delete("/:id", validateRequest(eventSchemas.delete), eventController.deleteEvent);
+
+export default router;
